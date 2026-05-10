@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — LaunchStack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--w:#FFF;--b:#0A0A0A;--g50:#FAFAF9;--g100:#F5F5F3;--g200:#EBEBEA;--g300:#D4D4D2;--g400:#A3A3A0;--g600:#6B6B68;--g800:#2C2C2A;--br:rgba(0,0,0,.07);--brm:rgba(0,0,0,.12);--fp:'Syne',sans-serif;--fd:'Cormorant Garamond',serif;--rm:12px;--rl:20px;--rx:28px;--eo:cubic-bezier(.16,1,.3,1);}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--fp);background:var(--w);color:var(--b);overflow-x:hidden;cursor:none;}
+a{color:inherit;text-decoration:none} button{cursor:none;border:none;background:none;font-family:inherit}
+#cursor{width:10px;height:10px;background:var(--b);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:exclusion;}
+#cursor-follower{width:36px;height:36px;border:1px solid rgba(10,10,10,.25);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.9);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--br);}
+.nl{font-weight:800;font-size:1.1rem;letter-spacing:-.04em;display:flex;align-items:center;gap:8px;}
+.nm{width:26px;height:26px;background:var(--b);border-radius:7px;display:flex;align-items:center;justify-content:center;}
+.nls{display:flex;align-items:center;gap:2rem;font-size:.875rem;font-weight:500;color:var(--g600);}
+.nls a{transition:color .2s;}.nls a:hover,.nls a.on{color:var(--b);}
+.nc{display:flex;align-items:center;gap:.75rem;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:.5rem 1.1rem;border-radius:100px;font-family:var(--fp);font-weight:600;font-size:.8125rem;transition:all .25s var(--eo);}
+.bg{color:var(--g600);border:1px solid transparent;}.bg:hover{color:var(--b);border-color:var(--brm);}
+.bd{background:var(--b);color:var(--w);border:1px solid var(--b);}.bd:hover{background:var(--g800);transform:translateY(-1px);}
+.bo{color:var(--b);border:1px solid var(--brm);background:var(--w);}.bo:hover{border-color:var(--g400);transform:translateY(-1px);}
+.bxl{padding:.875rem 2rem;font-size:.9375rem;}
+.bw{background:var(--w);color:var(--b);border:1px solid var(--w);}.bw:hover{background:rgba(255,255,255,.88);transform:translateY(-1px);}
+.bow{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);}.bow:hover{border-color:rgba(255,255,255,.4);color:var(--w);}
+.ct{max-width:1200px;margin:0 auto;padding:0 2.5rem;}
+.sl{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.sl::before{content:'';display:block;width:20px;height:1px;background:var(--g300);}
+.sh{font-size:clamp(1.75rem,3.5vw,3rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:1rem;}
+.ss{font-size:1rem;color:var(--g600);line-height:1.65;max-width:520px;margin-bottom:3rem;letter-spacing:-.01em;}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--eo),transform .7s var(--eo);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.ph{padding:140px 0 80px;border-bottom:1px solid var(--br);}
+.ph h1{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:800;letter-spacing:-.045em;line-height:.97;margin-bottom:1.75rem;}
+.ph h1 em{font-family:var(--fd);font-style:italic;font-weight:300;}
+.ph p{font-size:1.125rem;color:var(--g600);line-height:1.65;max-width:520px;letter-spacing:-.01em;margin-bottom:2.5rem;}
+.ph .kk{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem;}
+.ph .kk::before{content:'';display:block;width:20px;height:1px;background:var(--g300);}
+.card{background:var(--w);border:1px solid var(--br);border-radius:var(--rl);padding:1.75rem;transition:border-color .3s,transform .35s var(--eo),box-shadow .35s;}
+.card:hover{border-color:var(--brm);transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.07);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.tag{display:inline-flex;padding:.3rem .75rem;border-radius:100px;background:var(--g100);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--g600);}
+footer{padding:4rem 0 2.5rem;border-top:1px solid var(--br);}
+.fg{display:grid;grid-template-columns:240px 1fr 1fr 1fr;gap:3rem;margin-bottom:4rem;}
+.flo{font-weight:800;font-size:1.05rem;letter-spacing:-.04em;margin-bottom:.875rem;display:flex;align-items:center;gap:8px;}
+.ft{font-size:.8rem;color:var(--g400);line-height:1.55;max-width:180px;}
+.fct{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g400);margin-bottom:1.125rem;}
+.fl{display:flex;flex-direction:column;gap:.625rem;}
+.fl a{font-size:.825rem;color:var(--g600);transition:color .2s;}.fl a:hover{color:var(--b);}
+.fb{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid var(--br);}
+.fc{font-size:.75rem;color:var(--g400);}
+.fs{display:flex;gap:1rem;}
+.fs a{font-size:.75rem;color:var(--g400);font-weight:500;transition:color .2s;}.fs a:hover{color:var(--b);}
+.nf{display:flex;gap:.5rem;margin-top:1rem;}
+.ni{flex:1;padding:.5rem .875rem;border:1px solid var(--brm);border-radius:100px;font-family:var(--fp);font-size:.8rem;background:var(--w);outline:none;}
+.ni::placeholder{color:var(--g400);}
+.nb{padding:.5rem 1rem;background:var(--b);color:var(--w);border-radius:100px;font-size:.75rem;font-weight:600;cursor:none;}
+
+.amanifesto{padding:6rem 0;border-bottom:1px solid var(--br);}
+.amlayout{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+.amtext{font-size:1.125rem;color:var(--g600);line-height:1.75;letter-spacing:-.01em;}
+.amtext p{margin-bottom:1.25rem;}
+.amtext strong{color:var(--b);}
+.astats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--br);border:1px solid var(--br);border-radius:var(--rl);overflow:hidden;}
+.astat{background:var(--w);padding:2rem;text-align:center;}
+.asnum{font-size:2.5rem;font-weight:800;letter-spacing:-.05em;margin-bottom:.5rem;}
+.aslbl{font-size:.7rem;font-weight:500;color:var(--g400);letter-spacing:.03em;}
+.vals{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:3.5rem;}
+.valcard{border:1px solid var(--br);border-radius:var(--rl);padding:1.75rem;transition:border-color .3s,transform .35s var(--eo);}
+.valcard:hover{border-color:var(--brm);transform:translateY(-3px);}
+.valn{font-size:1rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.625rem;}
+.vald{font-size:.8rem;color:var(--g600);line-height:1.55;}
+
+/* === MOBILE RESPONSIVE — does not affect desktop === */
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; }
+
+  /* Nav: hide links and CTAs, show hamburger */
+  .nls, .nc { display: none !important; }
+  nav { padding: 0 1.25rem !important; }
+
+  /* Hamburger button */
+  .mob-toggle {
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .mob-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #0A0A0A;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mob-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mob-toggle.open span:nth-child(2) { opacity: 0; }
+  .mob-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile nav overlay */
+  .mob-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(16px);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+  }
+  .mob-overlay.open { display: flex; }
+  .mob-overlay a {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0A0A0A;
+    text-decoration: none;
+    letter-spacing: -0.03em;
+  }
+  .mob-overlay .mob-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 240px;
+    margin-top: 0.5rem;
+  }
+  .mob-overlay .mob-cta-wrap a {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .mob-overlay .mob-cta-wrap .m-dark { background: #0A0A0A; color: #fff; }
+  .mob-overlay .mob-cta-wrap .m-out  { border: 1px solid rgba(0,0,0,0.15); color: #0A0A0A; }
+
+  /* Containers */
+  .ct { padding: 0 1.25rem !important; }
+
+  /* Page hero */
+  .ph { padding: 100px 0 56px !important; }
+  .ph h1 { font-size: clamp(2rem, 9vw, 3.2rem) !important; }
+  .ph p   { font-size: 0.9375rem !important; max-width: 100% !important; }
+
+  /* All multi-column grids → 1 column */
+  .g2, .g3, .g4 { grid-template-columns: 1fr !important; }
+  .amlayout      { grid-template-columns: 1fr !important; gap: 3rem !important; }
+  .clayout       { grid-template-columns: 1fr !important; gap: 2.5rem !important; padding: 3rem 0 !important; }
+  .vals          { grid-template-columns: 1fr !important; }
+  .bgrid         { grid-template-columns: 1fr !important; }
+  .wgrid         { grid-template-columns: 1fr !important; }
+  .pgdiv         { grid-template-columns: 1fr 1fr !important; }
+  .pcards        { grid-template-columns: 1fr !important; }
+  .pkits         { grid-template-columns: 1fr 1fr !important; }
+  .fg            { grid-template-columns: 1fr !important; gap: 2rem !important; }
+
+  /* Footer bottom row */
+  .fb { flex-direction: column !important; align-items: center !important; gap: 0.75rem !important; text-align: center !important; }
+  .fs { justify-content: center !important; }
+
+  /* CTA dark section buttons */
+  .cta-btns { flex-direction: column !important; align-items: center !important; }
+  .cta-btns a { width: 100% !important; max-width: 280px !important; justify-content: center !important; }
+
+  /* Stats grid stays 2-col */
+  .astats { grid-template-columns: 1fr 1fr !important; }
+
+  /* Pricing table scrollable */
+  .ptable-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { min-width: 480px; }
+
+  /* Contact 2-col name row → 1 col */
+  .cname-row { grid-template-columns: 1fr !important; }
+
+  /* Section padding trim */
+  section { padding-left: 0; padding-right: 0; }
+}
+
+@media (max-width: 480px) {
+  .ph h1 { font-size: clamp(1.75rem, 8.5vw, 2.5rem) !important; }
+  .pgdiv { grid-template-columns: 1fr !important; }
+  .pkits { grid-template-columns: 1fr !important; }
+  .astats { grid-template-columns: 1fr 1fr !important; }
+}
+
+
+:root{--teal:#0d9488;--sky:#0ea5e9;--grad-teal:linear-gradient(135deg,#0d9488 0%,#0ea5e9 100%);}
+.nm,.nav-logo-mark{background:var(--grad-teal)!important;}
+.bd,.btn-dark{background:var(--grad-teal)!important;border-color:transparent!important;}
+.bd:hover,.btn-dark:hover{filter:brightness(0.9);transform:translateY(-2px)!important;box-shadow:0 8px 24px rgba(13,148,136,.3)!important;}
+.sl::before{background:var(--teal)!important;}
+.sl{color:var(--teal)!important;}
+.card:hover,.valcard:hover,.bcard:hover,.pcard:hover{border-color:rgba(13,148,136,.2)!important;}
+.ph{background:linear-gradient(135deg,rgba(13,148,136,.035) 0%,rgba(14,165,233,.035) 100%);}
+
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-follower"></div>
+<nav>
+  <a href="index.html" class="nl"><div class="nm"><svg width="14" height="14" viewBox="0 0 14 14" fill="white"><path d="M7 1L13 7L7 13L1 7L7 1Z"/><path d="M7 4L10 7L7 10L4 7L7 4Z" opacity=".5"/></svg></div>LaunchStack</a>
+  <div class="nls"><a href="services.html">Services</a><a href="work.html">Work</a><a href="process.html">Process</a><a href="index.html#testimonials">Stories</a></div>
+  <div class="nc"><a href="contact.html" class="btn bg">Book a Call</a><a href="contact.html" class="btn bd">Start a Project</a></div>
+</nav>
+<div class="ph"><div class="ct">
+  <div class="kk rv">Our story</div>
+  <h1 class="rv d1">Built for the<br><em>builders.</em></h1>
+  <p class="rv d2">LaunchStack was founded on a simple observation: the best startups were losing to inferior ones because the best couldn't execute as fast. We exist to fix that.</p>
+</div></div>
+
+<section class="amanifesto"><div class="ct">
+<div class="amlayout">
+  <div>
+    <div class="sl rv">The problem we solve</div>
+    <div class="amtext rv d1">
+      <p>In 2021, we watched a brilliant product lose to a mediocre one — not because of technology or market fit, but because of execution speed and brand clarity. The better product took 18 months to find its story. The inferior one launched in 8 weeks with a sharp brand and a tight GTM.</p>
+      <p><strong>Fragmentation is the enemy of momentum.</strong> Most startups work with five different agencies, three freelancers, and a handful of SaaS tools that don't talk to each other. Every handoff loses context. Every agency has a different idea of what success looks like.</p>
+      <p>We built LaunchStack to be the alternative: a single integrated operating system that brings brand, product, growth, and AI together under one team, one process, and one relentless standard of craft.</p>
+      <p><strong>We are not an agency. We are infrastructure.</strong></p>
+    </div>
+  </div>
+  <div>
+    <div class="astats rv d2">
+      <div class="astat"><div class="asnum">2021</div><div class="aslbl">Founded</div></div>
+      <div class="astat"><div class="asnum">140+</div><div class="aslbl">Launches shipped</div></div>
+      <div class="astat"><div class="asnum">$280M</div><div class="aslbl">Client revenue</div></div>
+      <div class="astat"><div class="asnum">28</div><div class="aslbl">Countries served</div></div>
+    </div>
+  </div>
+</div>
+</div></section>
+
+<section style="padding:6rem 0;background:var(--g50);border-top:1px solid var(--br);border-bottom:1px solid var(--br);">
+<div class="ct">
+  <div class="sl rv">What we believe</div>
+  <div class="sh rv d1" style="max-width:500px;">Four principles that<br>govern everything we build.</div>
+  <div class="vals"><div class="valcard rv d1"><div class="valn">Speed is a strategy</div><div class="vald">In a market that moves fast, time spent in planning without execution is time handed to a competitor. We move fast and we move right.</div></div>
+<div class="valcard rv d2"><div class="valn">Systems over solutions</div><div class="vald">A solution solves today's problem. A system solves tomorrow's too. Every piece of work we deliver is designed to compound over time.</div></div>
+<div class="valcard rv d3"><div class="valn">Craft is non-negotiable</div><div class="vald">We don't ship work we wouldn't be proud to put our name on. Quality is the baseline, not the ceiling.</div></div>
+<div class="valcard rv d1"><div class="valn">Clarity is kindness</div><div class="vald">Ambiguity is expensive. We say what we mean, challenge what doesn't serve the work, and give clients the honest read they need.</div></div>
+<div class="valcard rv d2"><div class="valn">Intelligence amplifies humans</div><div class="vald">AI should make your team more capable, not replace their judgment. We build AI systems that elevate the humans using them.</div></div>
+<div class="valcard rv d3"><div class="valn">The best brands take a position</div><div class="vald">Trying to appeal to everyone means resonating with no one. We help clients find and own a clear, defensible point of view.</div></div>
+
+  </div>
+</div>
+</section><section style="padding:6rem 0;background:var(--b);color:var(--w);text-align:center;">
+  <div class="ct">
+    <h2 style="font-size:clamp(2rem,4vw,3.5rem);font-weight:800;letter-spacing:-.04em;margin-bottom:1rem;">Want to work<br><em>together?</em></h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.5);margin-bottom:2.5rem;line-height:1.65;max-width:440px;margin-left:auto;margin-right:auto;">We take on a handful of new clients each quarter. If the timing is right, let's find out.</p>
+    <div style="display:flex;gap:.875rem;justify-content:center;">
+      <a href="contact.html" class="btn bw bxl">Start a Conversation →</a>
+      <a href="team.html" class="btn bow bxl">Meet the Team</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="ct">
+    <div class="fg">
+      <div><div class="flo"><div class="nm" style="width:22px;height:22px;border-radius:6px;"><svg width="12" height="12" viewBox="0 0 14 14" fill="white"><path d="M7 1L13 7L7 13L1 7L7 1Z"/></svg></div>LaunchStack</div><div class="ft">The AI-powered operating system for ambitious startups and modern businesses.</div><div style="margin-top:1.5rem;"><div style="font-size:.7rem;font-weight:600;color:var(--g400);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.625rem;">Newsletter</div><div class="nf"><input class="ni" type="email" placeholder="your@email.com"><button class="nb">Join</button></div></div></div>
+      <div><div class="fct">Product</div><div class="fl"><a href="services.html">Services</a><a href="work.html">Case Studies</a><a href="process.html">Process</a><a href="pricing.html">Pricing</a><a href="ai-systems.html">AI Systems</a></div></div>
+      <div><div class="fct">Company</div><div class="fl"><a href="about.html">About</a><a href="team.html">Team</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a><a href="press.html">Press</a></div></div>
+      <div><div class="fct">Connect</div><div class="fl"><a href="https://twitter.com" target="_blank">Twitter / X</a><a href="https://linkedin.com" target="_blank">LinkedIn</a><a href="https://instagram.com" target="_blank">Instagram</a><a href="https://dribbble.com" target="_blank">Dribbble</a><a href="mailto:hello@launchstack.io">hello@launchstack.io</a></div></div>
+    </div>
+    <div class="fb"><div class="fc">© 2025 LaunchStack. All rights reserved.</div><div class="fs"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookies</a></div></div>
+  </div>
+</footer>
+<script>
+const cr=document.getElementById('cursor'),cf=document.getElementById('cursor-follower');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cr.style.left=mx+'px';cr.style.top=my+'px';});
+(function af(){fx+=(mx-fx)*.12;fy+=(my-fy)*.12;cf.style.left=fx+'px';cf.style.top=fy+'px';requestAnimationFrame(af);})();
+const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.08,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
+document.querySelectorAll('[data-t]').forEach(c=>{
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(600px) rotateX(${-y*3}deg) rotateY(${x*3}deg) translateY(-3px)`;});
+  c.addEventListener('mouseleave',()=>{c.style.transform='';});
+});
+
+// Mobile nav toggle
+(function () {
+  var nav = document.querySelector('nav');
+  if (!nav) return;
+
+  var btn = document.createElement('button');
+  btn.className = 'mob-toggle';
+  btn.setAttribute('aria-label', 'Menu');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  btn.style.display = 'none';
+  nav.appendChild(btn);
+
+  var overlay = document.createElement('div');
+  overlay.className = 'mob-overlay';
+  overlay.innerHTML = [
+    '<a href="index.html">Home</a>',
+    '<a href="services.html">Services</a>',
+    '<a href="work.html">Work</a>',
+    '<a href="process.html">Process</a>',
+    '<a href="about.html">About</a>',
+    '<a href="blog.html">Blog</a>',
+    '<div class="mob-cta-wrap">',
+      '<a href="contact.html" class="m-out">Book a Call</a>',
+      '<a href="contact.html" class="m-dark">Start a Project</a>',
+    '</div>'
+  ].join('');
+  document.body.appendChild(overlay);
+
+  function checkSize() {
+    btn.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+  }
+  checkSize();
+  window.addEventListener('resize', checkSize);
+
+  btn.addEventListener('click', function () {
+    btn.classList.toggle('open');
+    overlay.classList.toggle('open');
+    document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+  });
+  overlay.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      btn.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}());
+
+</script>
+</body>
+</html>
